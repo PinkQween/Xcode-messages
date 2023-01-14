@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     private let scrollView: UIScrollView = {
@@ -144,6 +145,16 @@ class RegisterViewController: UIViewController {
         guard let username = UsernameField.text, let email = EmailField.text, let password = PasswordField.text, !email.isEmpty, !username.isEmpty, !password.isEmpty, password.count >= 8 else {
             alertUserLoginError()
             return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("Error creating user")
+                return
+            }
+            
+            let user = result.user
+            print("Created user: \(user)")
         }
     }
     
