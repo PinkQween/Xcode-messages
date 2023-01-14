@@ -17,5 +17,7 @@ pod 'GoogleUtilities/Environment'
 pod 'GoogleUtilities/Logger'
 pod 'GoogleUtilities/UserDefaults'
 pod 'GoogleUtilities/Reachability'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
 
 end

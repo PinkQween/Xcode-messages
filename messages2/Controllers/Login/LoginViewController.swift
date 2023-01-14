@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
     
@@ -70,6 +72,12 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
     }()
+    
+    private let loginButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.permissions = ["public_profile", "email"]
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,12 +90,14 @@ class LoginViewController: UIViewController {
         
         EmailField.delegate = self
         PasswordField.delegate = self
+        loginButton.delegate = self
         
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(EmailField)
         scrollView.addSubview(PasswordField)
         scrollView.addSubview(LoginButton)
+        scrollView.addSubview(loginButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -98,6 +108,8 @@ class LoginViewController: UIViewController {
         EmailField.frame = CGRect(x: 30, y: imageView.bottom + 45, width: scrollView.width - 60, height: 52)
         PasswordField.frame = CGRect(x: 30, y: EmailField.bottom + 10, width: scrollView.width - 60, height: 52)
         LoginButton.frame = CGRect(x: 30, y: PasswordField.bottom + 10, width: scrollView.width - 60, height: 52)
+        loginButton.frame = CGRect(x: 30, y: LoginButton.bottom + 10, width: scrollView.width - 60, height: 52)
+        loginButton.center = view.center
     }
     
     @objc private func loginButtonTapped() {
@@ -161,5 +173,62 @@ extension LoginViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+extension LoginViewController: LoginButtonDelegate {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {
+        // No operation
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        guard let token = result?.token?.tokenString else {
+            print("Failed to log in with FB")
+            return
+        }
+        
+        let facebookRequst = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, username"], tokenString: token, version: nil, httpMethod: .get)
+        
+//        facebookRequst.start() { connection, result, error in
+        GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get).start { connection, result, error in
+            guard let result = result as? [String: Any], error == nil else {
+                print("Failed request - \(error)")
+                return
+            }
+            
+            print(result)
+            guard let userName = result["name"] as? String, let email = result["email"] as? String else {
+                print("Failed to get name and email")
+                return
+            }
+//            let nameComponents = userName.components(separatedBy: " ")
+//            guard nameComponents.count == 2 else {
+//                return
+//            }
+            
+            let Username = userName
+            
+            DatabaseManager.shared.userExsists(with: email, completion: { exists in
+                if !exists {
+                    DatabaseManager.shared.insertUser(with: ChatAppUser(Username: Username, Email: email))
+                }
+            })
+
+            let credential = FacebookAuthProvider.credential(withAccessToken: token)
+
+            FirebaseAuth.Auth.auth().signIn(with: credential, completion: {[weak self] authResult, error in
+                guard let strongSelf = self else {
+                    return
+                }
+
+                //            guard authResult != nil, error == nil else {
+                //                print("May need MFA - \(error)")
+                //                return
+                //            }
+
+                print("Logged in")
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
+        }
     }
 }
