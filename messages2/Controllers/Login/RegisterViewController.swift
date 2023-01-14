@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
@@ -84,7 +84,7 @@ class RegisterViewController: UIViewController {
     
     private let RegisterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Create Acount", for: .normal)
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
@@ -147,15 +147,26 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let result = authResult, error == nil else {
-                print("Error creating user")
+        DatabaseManager.shared.userExsists(with: email, completion: {[weak self] exists in
+            guard let strongSelf = self else {
                 return
             }
             
-            let user = result.user
-            print("Created user: \(user)")
-        }
+            guard !exists else {
+                strongSelf.alertUserLoginError()
+                return
+            }
+            
+            Auth.auth().createUser(withEmail: email, password: password, completion: {authResult, error in
+                guard authResult != nil, error == nil else {
+                    print("Error creating user")
+                    return
+                }
+                
+                DatabaseManager.shared.insertUser(with: ChatAppUser(Username: username, Email: email))
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
+        })
     }
     
     func alertUserLoginError() {
