@@ -21,11 +21,12 @@
 		9551FE162972240600EC6FB1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551FE152972240600EC6FB1 /* RegisterViewController.swift */; };
 		9551FE182972243800EC6FB1 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551FE172972243800EC6FB1 /* PhotoViewerViewController.swift */; };
 		9551FE1A2972244700EC6FB1 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551FE192972244700EC6FB1 /* VideoPlayerViewController.swift */; };
-		9551FE1C2972254D00EC6FB1 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551FE1B2972254D00EC6FB1 /* NewConversationViewController.swift */; };
 		9551FE1E2972256800EC6FB1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551FE1D2972256800EC6FB1 /* ProfileViewController.swift */; };
 		9592137E29724E080081ED00 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592137D29724E080081ED00 /* Extensions.swift */; };
 		959213822973006A0081ED00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959213812973006A0081ED00 /* GoogleService-Info.plist */; };
 		95921384297319510081ED00 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95921383297319510081ED00 /* DatabaseManager.swift */; };
+		9592138629738BD70081ED00 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592138529738BD70081ED00 /* ChatViewController.swift */; };
+		95921388297397DA0081ED00 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95921387297397DA0081ED00 /* NewConversationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,12 +66,13 @@
 		9551FE152972240600EC6FB1 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9551FE172972243800EC6FB1 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		9551FE192972244700EC6FB1 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
-		9551FE1B2972254D00EC6FB1 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		9551FE1D2972256800EC6FB1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9592137D29724E080081ED00 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9592137F297300340081ED00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		959213812973006A0081ED00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95921383297319510081ED00 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		9592138529738BD70081ED00 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		95921387297397DA0081ED00 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		EE6688EF791B753DE40388E1 /* Pods-messages2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messages2.release.xcconfig"; path = "Target Support Files/Pods-messages2/Pods-messages2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,10 +178,11 @@
 				9592137F297300340081ED00 /* GoogleService-Info.plist */,
 				9551FE1F29722A7200EC6FB1 /* Login */,
 				9551FE112972226E00EC6FB1 /* ConversationsViewController.swift */,
+				95921387297397DA0081ED00 /* NewConversationViewController.swift */,
 				9551FE172972243800EC6FB1 /* PhotoViewerViewController.swift */,
 				9551FE192972244700EC6FB1 /* VideoPlayerViewController.swift */,
-				9551FE1B2972254D00EC6FB1 /* NewConversationViewController.swift */,
 				9551FE1D2972256800EC6FB1 /* ProfileViewController.swift */,
+				9592138529738BD70081ED00 /* ChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -415,13 +418,14 @@
 				9551FE14297223F300EC6FB1 /* LoginViewController.swift in Sources */,
 				95921384297319510081ED00 /* DatabaseManager.swift in Sources */,
 				9551FE162972240600EC6FB1 /* RegisterViewController.swift in Sources */,
-				9551FE1C2972254D00EC6FB1 /* NewConversationViewController.swift in Sources */,
 				9551FE122972226E00EC6FB1 /* ConversationsViewController.swift in Sources */,
 				9551FE1A2972244700EC6FB1 /* VideoPlayerViewController.swift in Sources */,
 				9592137E29724E080081ED00 /* Extensions.swift in Sources */,
+				95921388297397DA0081ED00 /* NewConversationViewController.swift in Sources */,
 				9551FDDC29721B4400EC6FB1 /* AppDelegate.swift in Sources */,
 				9551FE1E2972256800EC6FB1 /* ProfileViewController.swift in Sources */,
 				9551FDDE29721B4400EC6FB1 /* SceneDelegate.swift in Sources */,
+				9592138629738BD70081ED00 /* ChatViewController.swift in Sources */,
 				9551FE182972243800EC6FB1 /* PhotoViewerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
