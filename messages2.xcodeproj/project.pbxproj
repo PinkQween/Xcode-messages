@@ -27,6 +27,7 @@
 		95921384297319510081ED00 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95921383297319510081ED00 /* DatabaseManager.swift */; };
 		9592138629738BD70081ED00 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592138529738BD70081ED00 /* ChatViewController.swift */; };
 		95921388297397DA0081ED00 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95921387297397DA0081ED00 /* NewConversationViewController.swift */; };
+		9592138A2973BC040081ED00 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959213892973BC040081ED00 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		95921383297319510081ED00 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		9592138529738BD70081ED00 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		95921387297397DA0081ED00 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		959213892973BC040081ED00 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = messages2/Resources/StorageManager.swift; sourceTree = "<group>"; };
 		EE6688EF791B753DE40388E1 /* Pods-messages2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messages2.release.xcconfig"; path = "Target Support Files/Pods-messages2/Pods-messages2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 		9551FDCF29721B4400EC6FB1 = {
 			isa = PBXGroup;
 			children = (
+				959213892973BC040081ED00 /* StorageManager.swift */,
 				9551FDDA29721B4400EC6FB1 /* messages2 */,
 				9551FDF129721B4600EC6FB1 /* messages2Tests */,
 				9551FDFB29721B4600EC6FB1 /* messages2UITests */,
@@ -427,6 +430,7 @@
 				9551FDDE29721B4400EC6FB1 /* SceneDelegate.swift in Sources */,
 				9592138629738BD70081ED00 /* ChatViewController.swift in Sources */,
 				9551FE182972243800EC6FB1 /* PhotoViewerViewController.swift in Sources */,
+				9592138A2973BC040081ED00 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
