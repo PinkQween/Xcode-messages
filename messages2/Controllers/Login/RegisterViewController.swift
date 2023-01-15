@@ -171,6 +171,7 @@ class RegisterViewController: UIViewController {
                     print("Error creating user")
                     return
                 }
+                
                 let chatUser = ChatAppUser(Username: username, Email: email)
                 DatabaseManager.shared.insertUser(with: chatUser, completion: {success in
                     guard let image = strongSelf.imageView.image, let data = image.pngData() else {

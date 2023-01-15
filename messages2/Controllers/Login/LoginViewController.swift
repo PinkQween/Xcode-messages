@@ -140,6 +140,9 @@ class LoginViewController: UIViewController {
             }
             
             let user = result.user
+            
+            UserDefaults.standard.set(email, forKey: "email")
+            
             print("Singed in as: \(user)")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
@@ -215,6 +218,8 @@ extension LoginViewController: LoginButtonDelegate {
             
             let Username = userName
             
+            UserDefaults.standard.set(email, forKey: "email")
+            
             DatabaseManager.shared.userExsists(with: email, completion: { exists in
                 if !exists {
                     let chatUser = ChatAppUser(Username: Username, Email: email)
@@ -226,7 +231,6 @@ extension LoginViewController: LoginButtonDelegate {
                             
                             URLSession.shared.dataTask(with: url, completionHandler: {data, _, _ in
                                 guard let data = data else {
-                                    print("An error occured")
                                     return
                                 }
                                 
